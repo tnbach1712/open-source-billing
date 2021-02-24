@@ -38,12 +38,19 @@ group :development do
   gem 'awesome_print', '1.7.0'
   # gem 'quiet_assets'
   gem 'copyright-header', '1.0.15'
-  gem 'capistrano', '3.10.2'
-  gem 'capistrano-rails', '1.1.3'
+  # gem 'capistrano', '3.10.2'
+  # gem 'capistrano-rails', '1.1.3'
   gem "letter_opener", '1.4.1'
   gem 'listen'
 end
-gem 'capistrano-rvm', '0.1.2'
+# gem 'capistrano-rvm', '0.1.2'
+gem 'capistrano',  '~> 3.1'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-rvm'
+# gem 'capistrano3-delayed-job', '~> 1.0'
+gem 'capistrano3-puma', '~> 3.1.1' #github: "seuros/capistrano-puma"
+
+
 gem 'browser'
 gem 'gon', '6.3.1'
 gem 'rest-client', '1.8.0'

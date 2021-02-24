@@ -78,6 +78,8 @@ namespace :puma do
   #before :start, :make_dirs
 end
 
+before "deploy:assets:precompile", "deploy:yarn_install"
+
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
@@ -102,6 +104,15 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       invoke 'puma:restart'
       # invoke 'delayed_job:restart'
+    end
+  end
+  
+  desc "Run rake yarn install"
+  task :yarn_install do
+    on roles(:web) do
+      within release_path do
+        execute("cd #{release_path} && yarn install --silent --no-progress --no-audit --no-optional")
+      end
     end
   end
 
